@@ -6,7 +6,7 @@ let label = 'Loading...';
 
 function modelReady() {
   console.log('model ready');
-  classifier.load('model.json', custoModelReady);
+  classifier.load('modelos/model.json', custoModelReady);
 
 }
 
