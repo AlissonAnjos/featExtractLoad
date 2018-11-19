@@ -2,6 +2,9 @@ let video;
 let model;
 let classifier;
 let label = 'Loading...';
+let imgButton;
+let trainButton;
+let saveButton;
 
 
 function modelReady() {
@@ -26,12 +29,25 @@ function setup() {
 
   model = ml5.featureExtractor('MobileNet', modelReady);
   classifier = model.classification(video, videoReady);
+	
+  imgButton = createButton('Capturar');
+	imgButton.mousePressed(function (){
+  			classifier.addImage('Alisson'); });
+
+  
+  trainButton = createButton('Treinar');
+	trainButton.mousePressed(function(){
+  			classifier.train(trainProgress)});
+  
+  trainButton = createButton('Salvar');
+	trainButton.mousePressed(function(){
+  			classifier.save()});	
   
 
 }
 
 function draw() {
-	background(0);
+  background(0);
   image(video, 0, 0, width, height-30);
   fill(255, 0, 0);
   noStroke();
@@ -41,6 +57,15 @@ function draw() {
  
 }
 
+function trainProgress(loss){
+  if(loss == null){
+    console.log('Treino finalizado!');
+    classifier.classify(gotResult);
+  }
+  else{
+  	console.log(loss);
+  }
+}
 
 function gotResult(err, result) {
   if (err) {
