@@ -33,7 +33,7 @@ function setup() {
 	
   imgButton = createButton('Capturar');
 	imgButton.mousePressed(function (){
-  			classifier.addImage('Claudia'); });
+  			classifier.addImage('tv'); });
 
   
   trainButton = createButton('Treinar');
