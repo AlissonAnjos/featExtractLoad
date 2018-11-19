@@ -16,7 +16,7 @@ function modelReady() {
 function custoModelReady(){
   console.log('CustoModel ready');
    label = 'Carregado';
-//  classifier.classify(gotResult);
+   classifier.classify(gotResult);
 }
 
 function videoReady() {
